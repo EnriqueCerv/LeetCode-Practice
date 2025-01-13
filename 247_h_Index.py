@@ -15,4 +15,17 @@ def hIndex(citations):
                 h_index += 1
         return h_index
 
+def hIndex(citations):
+        """
+        :type citations: List[int]
+        :rtype: int
+        """
+        hIndex = 0
+        citations.sort()
+        citations.reverse()
+
+        for citation in citations:
+            if citation > hIndex:
+                hIndex += 1
+        return hIndex
 citations = [3,0,6,1,5]

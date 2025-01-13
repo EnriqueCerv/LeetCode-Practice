@@ -5,27 +5,28 @@ def maxArea(height):
         :type height: List[int]
         :rtype: int
         """
-        water = 0
         n = len(height)
-        
-        # left_max = 0
-        # left_max_idx = 0
-        # right_max = 0
-        # right_max_idx = n-1
-        # for i in range(n):
-        #     if left_max < height[i]:
-        #         left_max = height[i]
-        #         left_max_idx = i
-        #     length = right_max_idx - left_max_idx
-        #     water = max(water, length * min(right_max, left_max))
-        #     if right_max < height[n-1-i]:
-        #         right_max = height[n-1-i]
-        #         right_max_idx = n-1-i
-        #     # print(left_max, right_max)
-        #     length = right_max_idx - left_max_idx
-        #     water = max(water, length * min(right_max, left_max))
-        # return water
+        left = 0
+        leftMax = 0
+        right = n - 1
+        rightMax = 0
+        water = 0
 
+        while left < right:
+            leftMax = max(leftMax, height[left])
+            rightMax = max(rightMax, height[right])
+
+            water = max(water, min(leftMax, rightMax) * (right - left))
+
+            if leftMax < rightMax:
+                left += 1
+            else:
+                right -= 1
+
+        return water
+
+def maxArea(height):
+        n = len(height)
         left = 0
         right = n-1
         water = 0
@@ -43,3 +44,4 @@ height = [1,2,4,3]
 height = [2,3,4,5,18,17,6]
 
 maxArea(height)
+

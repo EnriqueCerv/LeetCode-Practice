@@ -5,38 +5,21 @@ def isSubsequence(s, t):
         :type t: str
         :rtype: bool
         """
-        if len(s) == 0:
-            return True
-        elif len(t) == 0:
-            return False
-        # sub = [char for char in s]
-        # t = [char for char in t]
-        # idx = 0
-        # for i in range(len(t)):
-        #     if t[idx] != sub[0]:
-        #         t.pop(idx)
-        #     else:
-        #         idx += 1
-        #         sub.pop(0)
-        #     print(sub,t)
-        # return ''.join(t) == s
-        sub = [char for char in s]
+        s = [char for char in s]
         t = [char for char in t]
-        idx = 0
-        for i in range(len(t)):
-            if len(sub) == 0:
-                return True
-            elif len(t) <= idx:
+
+        while len(s) > 0:
+
+            if len(t) == 0 or len(t) < len(s):
                 return False
-            if t[idx] != sub[0]:
-                t.pop(idx)
-            else:
-                idx += 1
-                sub.pop(0)
-            # print(sub, t)
-            
-        return ''.join(t) == s
+
+            if t[0] == s[0]:
+                s.pop(0)
+            t.pop(0)
+        
+        return True
 
 s = "b"
 t = "abc"
 isSubsequence(s,t)
+

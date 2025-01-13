@@ -24,3 +24,22 @@ def jump(nums):
         return 1 + jump(nums)
 
 jump(nums)
+
+
+def jumps(nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
+    nJumps = 0
+    maxReaßch = 0
+    lastReach = 0
+
+    for idx, num in enumerate(nums[:-1]):
+        maxReach = max(maxReach, idx + num)
+
+        if lastReach == idx:
+            nJumps += 1
+            lastReach = maxReach
+
+    return nJumps

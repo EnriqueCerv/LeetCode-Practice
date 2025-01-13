@@ -37,4 +37,13 @@ def canJump(self, nums):
                 return True
         return True
 
-        
+def canJump(nums):
+        maxReach = 0
+
+        for idx, reach in enumerate(nums):
+            if maxReach < idx:
+                return False
+
+            maxReach = max(maxReach, idx + reach)
+
+        return maxReach >= len(nums) - 1
