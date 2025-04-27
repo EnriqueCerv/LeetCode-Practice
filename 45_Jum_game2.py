@@ -32,7 +32,7 @@ def jumps(nums):
     :rtype: int
     """
     nJumps = 0
-    maxReaßch = 0
+    maxReach = 0
     lastReach = 0
 
     for idx, num in enumerate(nums[:-1]):

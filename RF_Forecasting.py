@@ -157,3 +157,4 @@ nvda = data_prep(nvda, st = '2000-01-01')
 model, train, test = model_train(nvda)
 score = model_test(model, test)
 score
+# %%
