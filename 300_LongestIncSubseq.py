@@ -19,3 +19,19 @@ def lengthOfLIS(self, nums):
             maxLength = max(maxLength, lengths[i])
         # print(lengths)
         return maxLength
+
+
+def lengthOfLIS(self, nums: List[int]) -> int:
+        n = len(nums)
+        subseqs = [1]*n
+        max_len = 1
+
+        for i in range(n):
+            possible = [subseqs[j] + 1 for j in reversed(range(i)) if nums[j] < nums[i]]
+            if possible:
+                subseqs[i] = max(possible)
+
+            if subseqs[i] > max_len:
+                max_len = subseqs[i]
+        
+        return max_len      

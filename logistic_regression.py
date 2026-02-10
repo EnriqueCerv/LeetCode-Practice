@@ -41,10 +41,15 @@ from sklearn.datasets import load_iris
 from sklearn.linear_model import LogisticRegression
 
 X, y = load_iris(return_X_y=True)
-reg = LogisticRegression()
+reg = LogisticRegression(penalty='l2', solver='liblinear')
 
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.25)
+
+from sklearn.preprocessing import StandardScaler
+ss = StandardScaler()
+X_train = ss.fit_transform(X_train)
+X_test = ss.transform(X_test)
 
 reg.fit(X_train, y_train)
 

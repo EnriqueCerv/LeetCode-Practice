@@ -30,3 +30,24 @@ def uniquePathsWithObstacles(self, obstacleGrid):
             
         backtrack(0,0)
         return 0 if obstacleGrid[m-1][n-1] == 1 else paths[0][0]
+
+## Tabulation one
+def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
+        m, n = len(obstacleGrid), len(obstacleGrid[0])
+        paths = [[0]*n for i in range(m)]
+
+        for i in reversed(range(m)):
+            for j in reversed(range(n)):
+                if obstacleGrid[i][j] == 1:
+                    paths[i][j] = 0
+                else:
+                    if i == m - 1 and j == n - 1:
+                        paths[i][j] = 1
+                    elif i == m - 1:
+                        paths[i][j] = paths[i][j + 1]
+                    elif j == n - 1:
+                        paths[i][j] = paths[i + 1][j]
+                    else: 
+                        paths[i][j] = paths[i][j + 1] + paths[i + 1][j]
+                # print(paths)
+        return paths[0][0]

@@ -56,20 +56,20 @@ values = [1,2,3]
 W = 4
 # 4
 
-values = [60, 100, 120]
-weights = [10, 20, 30]
-W = 50
-# 220
+# values = [60, 100, 120]
+# weights = [10, 20, 30]
+# W = 50
+# # 220
 
-values = [10, 20, 30]
-weights = [2, 3, 5]
-W = 10
-# 60
+# values = [10, 20, 30]
+# weights = [2, 3, 5]
+# W = 10
+# # 60
 
-values = [100, 90, 120]
-weights = [50, 40, 60]
-W = 50
-# 100
+# values = [100, 90, 120]
+# weights = [50, 40, 60]
+# W = 50
+# # 100
 
 
 knapsackMemo(weights, values, W)
@@ -116,14 +116,14 @@ maxWeight = 4
 # maxWeight = 50
 # # 220
 
-profit = [10, 20, 30]
-weight = [2, 3, 5]
-maxWeight = 10
-# 60
+# profit = [10, 20, 30]
+# weight = [2, 3, 5]
+# maxWeight = 10
+# # 60
 
-profit = [100, 90, 120]
-weight = [50, 40, 60]
-maxWeight = 50
-# 100
+# profit = [100, 90, 120]
+# weight = [50, 40, 60]
+# maxWeight = 50
+# # 100
 
 knapsack(weight, profit, maxWeight)
