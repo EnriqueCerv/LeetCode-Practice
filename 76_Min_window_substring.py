@@ -1,36 +1,25 @@
-# %% 76. Min window substring
+def minWindow(self, s: str, t: str) -> str:
+        from collections import Counter
 
-def minWindow(s, t):
-        """
-        :type s: str
-        :type t: str
-        :rtype: str
-        """
-        m = len(s)
-        n = len(t)
+        m, n = len(s), len(t)
+        if n > m:
+            return ''
 
-        tDict = {}
-        for ele in t:
-            if ele in tDict:
-                tDict[ele] += 1
-            else:
-                tDict[ele] = 1
+        t_freq = Counter(t)
+        min_length = float('inf')
+        left = start = 0
 
-        left = 0
-        min_string = []
+        for right, char_right in enumerate(s):
+            if char_right in t_freq:
+                t_freq[char_right] -= 1
 
-        for right in range(m):
-            min_string.append(s[right])
-            if s[right] in tDict:
-                tDict[s[right]] -= 1
-            while sum(tDict.values()) == 0 and right - left >= n:
-                if s[left] in tDict:
-                    tDict[s[left]] += 1
-                min_string.pop(0)
+            while all(freq <= 0 for freq in t_freq.values()):
+                if right - left + 1 < min_length:
+                    min_length = right - left + 1
+                    start = left
+                char_left = s[left]
+                if char_left in t_freq:
+                    t_freq[char_left] += 1
                 left += 1
-        return ''.join(min_string)
 
-s = "ADOBECODEBANC"
-t = 'ABC'
-
-minWindow(s,t)
+        return '' if min_length == float('inf') else s[start : start + min_length]

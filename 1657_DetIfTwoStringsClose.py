@@ -24,3 +24,9 @@ word1 = 'uau'
 word2 = 'ssx'
 
 closeStrings(word1,word2)
+
+class Solution:
+    def closeStrings(self, word1: str, word2: str) -> bool:
+        from collections import Counter
+        freq1, freq2 = Counter(word1), Counter(word2)
+        return sorted(freq1.values()) == sorted(freq2.values()) and set(freq1.keys()) == set(freq2.keys())

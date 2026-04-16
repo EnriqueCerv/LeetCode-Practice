@@ -1,15 +1,14 @@
 # %% 128 Longest consecutive sequence
-def longestConsecutive(nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        nums = {num for num in nums}
-        counter = 0
-        for num in nums:
-            cur_counter = 1
-            while num + 1 in nums:
-                cur_counter += 1
+def longestConsecutive(self, nums: List[int]) -> int:
+        max_len = 0
+        num_set = set(nums)
+
+        for num in num_set:
+            cur_len = 1
+            if num - 1 in num_set:
+                continue
+            while num + 1 in num_set:
+                cur_len += 1
                 num += 1
-            counter = max(counter, cur_counter)
-        return counter
+            max_len = max(max_len, cur_len)
+        return max_len
