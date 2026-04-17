@@ -7,27 +7,30 @@
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         # # dfs
+        # max_depth = -1
         # result = []
-        # depth = -1
 
         # def dfs(node, cur_depth):
-        #     nonlocal depth
+        #     nonlocal max_depth
+
         #     if node is None:
         #         return
-        #     if cur_depth > depth:
+            
+        #     if cur_depth > max_depth:
+        #         max_depth = cur_depth
         #         result.append(node.val)
-        #         depth = cur_depth
-
+            
         #     dfs(node.right, cur_depth + 1)
         #     dfs(node.left, cur_depth + 1)
         
         # dfs(root, 0)
         # return result
 
-        # bsf
-        from collections import deque
-        if not root:
+        # bfs
+        if root == None:
             return []
+            
+        from collections import deque
 
         result = []
         queue = deque([root])
@@ -35,9 +38,10 @@ class Solution:
         while queue:
             level = len(queue)
 
-            for i in range(level):
+            for idx in range(level):
                 node = queue.popleft()
-                if i == level - 1:
+
+                if idx == level - 1:
                     result.append(node.val)
                 if node.left:
                     queue.append(node.left)

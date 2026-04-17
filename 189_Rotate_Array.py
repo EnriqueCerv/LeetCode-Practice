@@ -14,3 +14,14 @@ def rotate(nums, k):
         return nums3
 
 rotate(nums,k)
+
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        k %= len(nums)
+        nums[:] = nums[-k :] + nums[ : -k] 
+
+        # for i in range(k):
+        #     nums.insert(0, nums.pop())
